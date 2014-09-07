@@ -16,7 +16,7 @@ function send404(response) {
 function sendFile(response, filePath, fileContents) {
 	response.writeHead(
 		200,
-		{"content-type": mime.lookup(path.basename(filepath))}
+		{"content-type": mime.lookup(path.basename(filePath))}
 	);
 	response.end(fileContents);
 }
@@ -56,5 +56,6 @@ var server = http.createServer(function(request, response) {
 server.listen(3000, function() {
     console.log("server is listening on 3000");
 })
-		
-	
+
+var chatServer = require('./lib/chat_server');
+chatServer.listen(server);
